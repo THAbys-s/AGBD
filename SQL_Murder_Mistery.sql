@@ -18,9 +18,22 @@ interview ON interview.person_id = person.id WHERE person.id = "16371"
 
 --  Posible solucion
 
-SELECT * FROM get_fit_now_member gn 
-INNER JOIN name
-ON get_fit_now_check_in.membership_id = gf.membership_name WHERE membership_id LIKE "48Z%"
+Select id, membership_status from get_fit_now_member as gm
+where membership_status LIKE "%gold"
+
+
+Select id, person_id, name, membership_status from get_fit_now_member as gm
+where membership_status LIKE "%gold"
+AND id LIKE "48Z%"
+
+Select * from drivers_license where 
+plate_number LIKE "H42W%"
+
+-- Literalmente lo interrogué y me contó todo, me tocará buscar más adelante
+-- al verdadero asesino, la mente detrás de todo.
+SELECT interview.transcript, person.name FROM person INNER JOIN 
+interview ON interview.person_id = person.id WHERE person.id = "67318"
+
 
 -- SELECT * from person, interview INNER JOIN interview person.address_street_name 
 -- LIKE "Northwestern Dr" AND person.id = "14887" ORDER BY interview.person_id asc
@@ -43,4 +56,12 @@ ON get_fit_now_check_in.membership_id = gf.membership_name WHERE membership_id L
 
 --                              ANNABEL MILLER                                          --
 -- I saw the murder happen, and I recognized the killer from --
+-- my gym when I was working out last week on January the 9th. -- 
+
+--                              JEREMY BOWERS 
+--                                [SICARIO]                                              --
+-- I was hired by a woman with a lot of money. --
+-- I don't know her name but I know she's around 5'5" (65") or 5'7" (67"). --
+-- She has red hair and she drives a Tesla Model S. --
+-- I know that she attended the SQL Symphony Concert 3 times in December 2017.  --
 -- my gym when I was working out last week on January the 9th. -- 
