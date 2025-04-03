@@ -112,11 +112,44 @@ ORDER BY "Actores más famosos" DESC;
 --                                                                  --
 --                           EJERCICIO 9                            --
 --                                                                  --
-SELECT address, COUNT() AS "Cantidad de Peliculas por cada Categoria"
+SELECT CONCAT("address", ", ", "city", ", ", "country") AS "Dirección, Ciudad y País", COUNT(inventory_id) AS "Cantidad de Ejemplares"
 FROM address ad
 INNER JOIN store st ON ad.address_id = st.address_id
-INNER JOIN film f ON fc.film_id = f.film_id
+INNER JOIN inventory i ON st.store_id = i.store_id
+INNER JOIN city ct ON ad.city_id = ct.city_id
+INNER JOIN country cf ON ct.country_id = cf.country_id
+GROUP BY ad.address, ct.city, cf.country
+ORDER BY "Cantidad de EJemplares" DESC;
+--                                                                  --
+--                           EJERCICIO 10                           --
+--                                                                  --
+SELECT CONCAT("address", ", ", "city", ", ", "country") AS "Dirección, Ciudad y País", COUNT(DISTINCT f.film_id) AS "Cantidad de Ejemplares Distintos"
+FROM address ad
+INNER JOIN store st ON ad.address_id = st.address_id
+INNER JOIN inventory i ON st.store_id = i.store_id
+INNER JOIN film f ON i.film_id = f.film_id
+INNER JOIN city ct ON ad.city_id = ct.city_id
+INNER JOIN country cf ON ct.country_id = cf.country_id
+GROUP BY ad.address, ct.city, cf.country
+ORDER BY "Cantidad de Ejemplares Distintos" DESC;
+--                                                                  --
+--                           EJERCICIO 11                           --
+--                                                                  --
+SELECT c.name AS "Categoría", AVG(f.rental_rate) AS "Costo Promedio de Alquiler"
+FROM category c
 INNER JOIN film_category fc ON c.category_id = fc.category_id
 INNER JOIN film f ON fc.film_id = f.film_id
-GROUP BY name
-ORDER BY "Cantidad de Peliculas por cada Categoria" DESC;
+GROUP BY c.name
+ORDER BY "Costo Promedio de Alquiler" DESC;
+--                                                                  --
+--                           EJERCICIO 12                           --
+--                                                                  --
+SELECT f.title AS "Película", (f.rental_duration * f.rental_rate) AS "Costo Total", r.rental_date AS "Fecha de Renta", r.return_date AS "Fecha de Devolución"
+FROM film f
+INNER JOIN inventory i ON i.film_id = f.film_id
+INNER JOIN rental r ON r.inventory_id  = i.inventory_id
+INNER JOIN payment p ON r.rental_id  = p.rental_id
+WHERE f.title LIKE "%Alabama Devil%"
+ORDER BY r.rental_date DESC;
+
+-- Realizado y comprendido, aunque creo que el precio es aproximado y que payment debería ser el real. --
