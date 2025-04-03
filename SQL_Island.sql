@@ -18,3 +18,5 @@ SELECT * from inhabitant Where job LIKE "%baker" ORDER BY gold
 UPDATE inhabitant SET gold = gold + 100 - 150 WHERE personid = 20
 INSERT INTO item (item, owner) VALUES ('sword', 20)
 SELECT * From inhabitant WHERE job LIKE "pilot"
+SELECT COUNT(*) FROM INHABITANT WHERE gender = 'f' and villageid = 3
+SELECT state, AVG(inhabitant.gold) FROM INHABITANT GROUP BY state ORDER BY AVG(inhabitant.gold)
