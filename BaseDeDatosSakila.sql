@@ -153,3 +153,13 @@ WHERE f.title LIKE "%Alabama Devil%"
 ORDER BY r.rental_date DESC;
 
 -- Realizado y comprendido, aunque creo que el precio es aproximado y que payment debería ser el real. --
+
+--                                                                  --
+--                           EJERCICIO 13                           --
+--                                                                  --
+SELECT fl.title AS "Pélicula", fl.length AS "Duración", c.name AS "Categoria"
+FROM film fl
+INNER JOIN film_category fc ON fc.film_id = fl.film_id
+INNER JOIN category c ON c.category_id = fc.category_id
+ORDER BY fl.length DESC
+LIMIT 10; -- Puse de limite 10 para que no crashee el SQLite -- 
