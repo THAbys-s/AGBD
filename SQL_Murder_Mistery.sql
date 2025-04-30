@@ -35,6 +35,12 @@ SELECT interview.transcript, person.name FROM person INNER JOIN
 interview ON interview.person_id = person.id WHERE person.id = "67318"
 
 
+--                      NUEVO AVANCE EN EL ASESINO REAL                          -- 
+
+SELECT fe.person_id, event_name, date FROM facebook_event_checkin fe
+INNER JOIN get_fit_now_member gf ON gf.person_id = fe.person_id
+INNER JOIN person p ON p.id = gf.id
+WHERE fe.date >= "20171201" and fe.date <= "20171231" and fe.event_name = "SQL Symphony Concert"
 
 
 --                      INFORMACIÓN RECOLECTADA HASTA AHORA:                          --
