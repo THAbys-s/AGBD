@@ -35,10 +35,6 @@ SELECT interview.transcript, person.name FROM person INNER JOIN
 interview ON interview.person_id = person.id WHERE person.id = "67318"
 
 
--- SELECT * from person, interview INNER JOIN interview person.address_street_name 
--- LIKE "Northwestern Dr" AND person.id = "14887" ORDER BY interview.person_id asc
-
-
 
 
 --                      INFORMACIÓN RECOLECTADA HASTA AHORA:                          --
