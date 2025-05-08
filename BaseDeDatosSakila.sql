@@ -163,3 +163,7 @@ INNER JOIN film_category fc ON fc.film_id = fl.film_id
 INNER JOIN category c ON c.category_id = fc.category_id
 ORDER BY fl.length DESC
 LIMIT 10; -- Puse de limite 10 para que no crashee el SQLite -- 
+
+--                                                                  --
+--                           EJERCICIO 14                           --
+--                                                                  --
