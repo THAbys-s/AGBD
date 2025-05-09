@@ -163,7 +163,39 @@ INNER JOIN film_category fc ON fc.film_id = fl.film_id
 INNER JOIN category c ON c.category_id = fc.category_id
 ORDER BY fl.length DESC
 LIMIT 10; -- Puse de limite 10 para que no crashee el SQLite -- 
-
 --                                                                  --
 --                           EJERCICIO 14                           --
+--                                                                  --
+-- Nombre de las peliculas que arranquen ‘w’ con al menos 5 actores
+SELECT fl.title AS "Pélicula"
+FROM film fl
+WHERE f.title LIKE "%w"
+HAVING COUNT() >= 5;
+--                                                                  --
+--                           EJERCICIO 15                           --
+--                                                                  --
+
+--                                                                  --
+--                           EJERCICIO 16                           --
+--                                                                  --
+
+--                                                                  --
+--                           EJERCICIO 17                           --
+--                                                                  --
+
+--                                                                  --
+--                           EJERCICIO 18                           --
+--                                                                  --
+--      Insertarse uno mismo como actor con todos sus campos.       --
+
+--                                                                  --
+--                           EJERCICIO 19                           --
+--                                                                  --
+
+--                                                                  --
+--                           EJERCICIO 20                           --
+--                                                                  --
+
+--                                                                  --
+--                           EJERCICIO 21                           --
 --                                                                  --
