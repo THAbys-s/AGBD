@@ -80,7 +80,15 @@ WHERE Composer = 'Galo Perez';
 --                                                                  --
 UPDATE tracks SET Name = 'Mazorto' WHERE Name = 'Mozart Is A Liar 1';
 UPDATE tracks SET Name = 'Mazierto' WHERE Name = 'Mozart Is A Liar 2';
+--                                                                  --
+--                           EJERCICIO 12                           --
+--                                                                  --
 
 SELECT Name AS "Canción", MediaTypeId, Composer, Milliseconds, Bytes, UnitPrice
 FROM tracks
-WHERE Composer = 'Galo Perez';
+WHERE Name IN ('Mazorto','Mazierto');
+--                                                                  --
+--                           EJERCICIO 13                           --
+--                                                                  --
+DELETE FROM tracks
+WHERE Name IN ('Mazorto', 'Mazierto');
