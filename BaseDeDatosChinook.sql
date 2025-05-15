@@ -57,9 +57,12 @@ ORDER BY t.Milliseconds DESC;
 --                                                                  --
 -- Apellido, puesto, apellido del jefe y cantidad de clientes que atiende de todos los empleados, 
 -- ordenado desde los que atienden más clientes a los que atienden menos
-SELECT e.LastName AS "Apellido", e.Title AS "Puesto"
+SELECT e.LastName AS "Apellido", e.Title AS "Puesto", em.LastName AS "Apellido del Jefe", COUNT(c.CustomerId) AS "Cantidad de Clientes"
 FROM employees e
-INNER JOIN customers c ON e.LastName = c.LastName
+LEFT JOIN employees em ON e.ReportsTo = em.EmployeeId
+LEFT JOIN customers c ON e.EmployeeId = c.SupportRepId
+GROUP BY e.EmployeeId, e.LastName, e.Title, em.LastName
+ORDER BY "Cantidad de Clientes" DESC;
 --                                                                  --
 --                           EJERCICIO 9                            --
 --                                                                  --
