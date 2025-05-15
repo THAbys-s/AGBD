@@ -174,10 +174,22 @@ HAVING COUNT() >= 5;
 --                                                                  --
 --                           EJERCICIO 15                           --
 --                                                                  --
+-- Calcular la suma total de los pagos (amount)                     --
+-- con nombre y apellido de cada cliente.--                         --
+SELECT cs.first_name, cs.last_name, SUM(pay.amount) AS pago_total
+FROM customer cs
+INNER JOIN payment pay ON cs.customer_id = pay.customer_id
+GROUP BY cs.customer_id, cs.first_name, cs.last_name
+ORDER BY pago_total DESC;
 
 --                                                                  --
 --                           EJERCICIO 16                           --
 --                                                                  --
+SELECT f.title AS "Película", f.length AS "Duración", CONCAT(a.first_name, ' ', a.last_name) AS "Actor"
+FROM film f
+INNER JOIN film_actor fa ON f.film_id = fa.film_id
+INNER JOIN actor a ON fa.actor_id = a.actor_id
+ORDER BY f.length ASC;
 
 --                                                                  --
 --                           EJERCICIO 17                           --
@@ -187,15 +199,23 @@ HAVING COUNT() >= 5;
 --                           EJERCICIO 18                           --
 --                                                                  --
 --      Insertarse uno mismo como actor con todos sus campos.       --
-
+INSERT INTO actor (actor_id, first_name, last_name, last_update) 
+VALUES (201, 'Juan Manuel', 'Parrado', '2025-5-15 08:59:40');
 --                                                                  --
 --                           EJERCICIO 19                           --
 --                                                                  --
-
+INSERT INTO actor (actor_id, first_name, last_name, last_update) 
+VALUES 
+(202, 'Diego', 'Ajata Ledezma', '2025-5-15 08:59:40'),
+(203, 'Santiago Gomez', 'Burzolino',  '2025-5-15 08:59:40');
 --                                                                  --
 --                           EJERCICIO 20                           --
 --                                                                  --
-
+UPDATE actor
+SET last_update = '2025-05-15 09:30:00'
+WHERE actor_id IN (201, 202, 203);
 --                                                                  --
 --                           EJERCICIO 21                           --
 --                                                                  --
+DELETE FROM actor
+WHERE actor_id IN (201, 202, 203);
